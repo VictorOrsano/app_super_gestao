@@ -1,55 +1,38 @@
-<h3>fornecedor</h3>
+@extends('app.layouts.basico')
 
-@php
-   /*
-   if(empty{$variavel}) {} //retornar true se a variavel estiver vazia
-   -''
-   -0
-   -0.0
-   -'0'
-   -null
-   -false
-   -array
-   -$var
-    */
-@endphp
+@section('titulo', 'Fornecedor')
 
-@isset(fornecedores)
+@section('conteudo') 
+    
+    <div class="conteudo-pagina">
 
+        <div class="titulo-pagina-2">
+            <p>Fornecedor</p>:
+        </div>
 
-        @forelse($fornecedores as $indice => $fornecedor)
-            Iteração atual:{{ $loop->iteration }}
-            <br>
-            Fornecedor: {{ $fornecedor['nome'] }}
-            <br>
-            Status: {{ $fornecedor['status'] }}
-            <br>
-            CNPJ; {{ $fornecedor['cnpj'] ?? ''}}
-            <br>
-            Telefone: ({{ $fornecedor[''ddd''] ?? ''}}) {{ $fornecedores[0]['cnpj'] ?? ''}}
-            <br>
-            @if($loop-> first)
-                primeira iteracao
-            @endif
-             @if($loop-> last)
-                Ultima iteracao do logo
-            @endif 
+        <div class="menu">
+            <ul>
+                <li><a href="{{ route('app.fornecedor.adicionar') }}">Novo</a><li>
+                <li><a href="{{ route('app.fornecedor') }}">Consulta</a><li>
+            </ul>
+        </div>
 
-            <hr>
-
-            |@if($loop->first)
-                primeira iteração do Loop
-            @endif
-            @if($loop->last)
-                Ultima iteracao do loop
-
-                <br>
-                Total de registros{{ $loop->count}}
-
-            @endif
+        <div class="informacao-pagina">
+            <div style="width: 30%;margin-left: auto; margin-right: auto;"> 
                 <hr>
-            @empty
-                Não existem fornecedores cadastrados!!!
-        @endforeelse 
-    @endisset
+                <h4>formulario de busca</h4>
+                <hr>
+                <form method="post" action="{{ route ('app.fornecedor.listar')}}">
+                @csrf
+                    <input type="text" Placeholder="Nome" class="borda-preta">
+                    <input type="text" Placeholder="site" class="borda-preta">
+                    <input type="text" Placeholder="uf" class="borda-preta">
+                    <input type="text" Placeholder="email" class="borda-preta">
+                    <button type="submit" class="borda-preta">Pesquisar</button>
+                </form>
+            </div>
+        </div>
 
+    </div>
+
+@endsection
