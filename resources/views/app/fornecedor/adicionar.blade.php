@@ -2,15 +2,15 @@
 
 @section('titulo', 'Fornecedor')
 
-@section('conteudo') 
-    
+@section('conteudo')
+
     <div class="conteudo-pagina">
 
         <div class="titulo-pagina-2">
             @if(isset($fornecedor->id))
                 <p>Fornecedor - Editar</p>
             @else
-                <p>Fornecedor - Adicion</p>        
+                <p>Fornecedor - Adicionar</p>
             @endif
         </div>
 
@@ -32,13 +32,13 @@
 
                     <input type="text" name="site" value="{{ $fornecedor->site ?? old('site')}}"Placeholder="site" class="borda-preta">
                     {{ $errors->has('site') ? $errors->first('site') : ''}}
-                    
+
                     <input type="text" name="uf" value="{{ $fornecedor->uf ?? old('uf')}}"Placeholder="uf" class="borda-preta">
                     {{ $errors->has('uf') ? $errors->first('uf') : ''}}
-                    
+
                     <input type="text" name="email" value="{{ $fornecedor->email ?? old('email')}}" Placeholder="email" class="borda-preta">
                     {{ $errors->has('email') ? $errors->first('email') : ''}}
-                    
+
                     <button type="submit" class="borda-preta">Cadastrar</button>
                 </form>
             </div>
